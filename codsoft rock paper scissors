@@ -1,0 +1,32 @@
+Rock paper scissors
+import random
+def get_winner(user, comp):
+    if user == comp:
+        return "DRAW"
+    elif (user == "rock" and comp == "scissors") or \
+         (user == "paper" and comp == "rock") or \
+         (user == "scissors" and comp == "paper"):
+        return "USER"
+    else:
+        return "COMP"
+print("Rock Paper Scissors")
+print("===================")
+while True:
+    choices = ["rock", "paper", "scissors"]
+    user_choice = input("Choose rock, paper, or scissors (or 'quit'): ").lower().strip()
+    if user_choice == "quit":
+        print("Thanks for playing!")
+        break
+    if user_choice not in choices:
+        print("Invalid choice. Try again.")
+        continue
+    comp_choice = random.choice(choices)
+    print(f"You: {user_choice}")
+    print(f"Computer: {comp_choice}")
+    winner = get_winner(user_choice, comp_choice)
+    if winner == "DRAW":
+        print("It's a tie!")
+    elif winner == "USER":
+        print("You win!")
+    else:
+        print("Computer wins!")
